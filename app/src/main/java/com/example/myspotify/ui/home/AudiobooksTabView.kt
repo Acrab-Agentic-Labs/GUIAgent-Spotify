@@ -23,7 +23,10 @@ import androidx.compose.ui.unit.sp
 /**
  * Audiobooks 标签页内容 — 有声书卡片 Feed 流
  */
-fun LazyListScope.audiobooksContent(onAudiobookClick: (AudiobookFeedItem) -> Unit = {}) {
+fun LazyListScope.audiobooksContent(
+    onAudiobookClick: (AudiobookFeedItem) -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
+) {
     val audiobookItems = listOf(
         AudiobookFeedItem(
             title = "The Art of Reading",
@@ -47,7 +50,11 @@ fun LazyListScope.audiobooksContent(onAudiobookClick: (AudiobookFeedItem) -> Uni
 
     audiobookItems.forEach { item ->
         item {
-            AudiobookCard(item, onClick = { onAudiobookClick(item) })
+            AudiobookCard(
+                item = item,
+                onClick = { onAudiobookClick(item) },
+                onPlaceholderClick = onPlaceholderClick
+            )
         }
     }
 
@@ -71,7 +78,11 @@ data class AudiobookFeedItem(
  * 有声书卡片
  */
 @Composable
-fun AudiobookCard(item: AudiobookFeedItem, onClick: () -> Unit = {}) {
+fun AudiobookCard(
+    item: AudiobookFeedItem,
+    onClick: () -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -142,7 +153,7 @@ fun AudiobookCard(item: AudiobookFeedItem, onClick: () -> Unit = {}) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconButton(
-                onClick = {},
+                onClick = onPlaceholderClick,
                 modifier = Modifier
                     .size(36.dp)
                     .clip(RoundedCornerShape(50))
@@ -157,7 +168,7 @@ fun AudiobookCard(item: AudiobookFeedItem, onClick: () -> Unit = {}) {
             }
             Spacer(modifier = Modifier.width(16.dp))
             IconButton(
-                onClick = {},
+                onClick = onPlaceholderClick,
                 modifier = Modifier
                     .size(36.dp)
                     .clip(RoundedCornerShape(50))

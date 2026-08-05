@@ -40,7 +40,8 @@ data class CategoryContentItem(
 fun CategoryDetailTabView(
     categoryTitle: String,
     items: List<CategoryContentItem>,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -87,7 +88,8 @@ fun CategoryDetailTabView(
                     pair.forEach { item ->
                         ContentCard(
                             item = item,
-                            modifier = Modifier.weight(1f)
+                            modifier = Modifier.weight(1f),
+                            onClick = onPlaceholderClick
                         )
                     }
                     if (pair.size == 1) {
@@ -110,12 +112,13 @@ fun CategoryDetailTabView(
 @Composable
 private fun ContentCard(
     item: CategoryContentItem,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
 ) {
     Column(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
-            .clickable { }
+            .clickable(onClick = onClick)
     ) {
         AssetImage(
             assetPath = item.assetPath,

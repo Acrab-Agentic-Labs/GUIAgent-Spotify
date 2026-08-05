@@ -38,7 +38,8 @@ fun LikedSongsTabView(
     onPlaylistMenuClick: () -> Unit = {},
     onSongMenuClick: (Song) -> Unit = {},
     likedSongIds: List<String> = emptyList(),
-    onToggleLike: (Song) -> Unit = {}
+    onToggleLike: (Song) -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
@@ -136,12 +137,17 @@ fun LikedSongsTabView(
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.ArrowDownward,
-                            contentDescription = "Download",
-                            tint = Color.Gray,
+                        IconButton(
+                            onClick = onPlaceholderClick,
                             modifier = Modifier.size(24.dp)
-                        )
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.ArrowDownward,
+                                contentDescription = "Download",
+                                tint = Color.Gray,
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
                         Spacer(modifier = Modifier.width(16.dp))
                         IconButton(
                             onClick = {
@@ -169,7 +175,7 @@ fun LikedSongsTabView(
 
                         // Shuffle 按钮
                         Button(
-                            onClick = {},
+                            onClick = onPlaceholderClick,
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = Color(0xFF1DB954)
                             ),
@@ -199,7 +205,7 @@ fun LikedSongsTabView(
                                 .size(48.dp)
                                 .clip(CircleShape)
                                 .background(Color(0xFF1DB954))
-                                .clickable {},
+                                .clickable(onClick = onPlaceholderClick),
                             contentAlignment = Alignment.Center
                         ) {
                             Icon(
@@ -225,6 +231,7 @@ fun LikedSongsTabView(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .clickable(onClick = onPlaceholderClick)
                         .padding(horizontal = 16.dp, vertical = 14.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {

@@ -25,7 +25,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun CreateTabView(
     onDismiss: () -> Unit,
-    onPlaylistCreate: () -> Unit = {}
+    onPlaylistCreate: () -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
 ) {
     // 半透明背景遮罩
     Box(
@@ -71,7 +72,10 @@ fun CreateTabView(
                 icon = Icons.Default.People,
                 title = "Blend",
                 description = "Combine tastes with friends to make a shared playlist",
-                onClick = { onDismiss() }
+                onClick = {
+                    onDismiss()
+                    onPlaceholderClick()
+                }
             )
 
             Spacer(modifier = Modifier.height(16.dp))

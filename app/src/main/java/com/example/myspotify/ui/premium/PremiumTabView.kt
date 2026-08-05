@@ -22,7 +22,8 @@ import androidx.compose.ui.unit.sp
  */
 @Composable
 fun PremiumTabView(
-    onPremiumActivated: () -> Unit = {}
+    onPremiumActivated: () -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
 ) {
     var showCheckOutTab by remember { mutableStateOf(false) }
     var showPaymentSuccess by remember { mutableStateOf(false) }
@@ -41,7 +42,8 @@ fun PremiumTabView(
     if (showCheckOutTab) {
         CheckOutTabView(
             onBack = { showCheckOutTab = false },
-            onPaymentSuccess = { showPaymentSuccess = true }
+            onPaymentSuccess = { showPaymentSuccess = true },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }

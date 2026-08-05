@@ -31,7 +31,11 @@ import kotlin.math.abs
  * AboutTheArtistTab View - 艺术家介绍页面
  */
 @Composable
-fun AboutTheArtistTabView(song: Song? = null, onBack: () -> Unit) {
+fun AboutTheArtistTabView(
+    song: Song? = null,
+    onBack: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
+) {
     val artistName = song?.artistName ?: "Kenshi Yonezu"
     val artistId = song?.artistId ?: "artist_005"
     val artistAvatar = AssetMapper.artistAvatar(artistId)
@@ -121,7 +125,7 @@ fun AboutTheArtistTabView(song: Song? = null, onBack: () -> Unit) {
 
                 // Follow 按钮
                 OutlinedButton(
-                    onClick = {},
+                    onClick = onPlaceholderClick,
                     modifier = Modifier.height(36.dp),
                     shape = RoundedCornerShape(18.dp),
                     border = androidx.compose.foundation.BorderStroke(1.dp, Color.White)

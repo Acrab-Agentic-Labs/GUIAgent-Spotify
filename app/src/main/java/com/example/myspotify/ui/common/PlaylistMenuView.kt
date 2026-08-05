@@ -1,6 +1,7 @@
 package com.example.myspotify.ui.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,7 +28,8 @@ import com.example.myspotify.model.Playlist
 @Composable
 fun PlaylistMenuView(
     playlist: Playlist,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
 ) {
     val coverPath = if (playlist.id.startsWith("album")) {
         AssetMapper.albumCover(playlist.id)
@@ -81,12 +83,12 @@ fun PlaylistMenuView(
         Spacer(modifier = Modifier.height(8.dp))
 
         // 菜单项列表
-        PlaylistMenuItem(icon = Icons.Default.Add, text = "Add to Your Library")
-        PlaylistMenuItem(icon = Icons.Default.ArrowDownward, text = "Download")
-        PlaylistMenuItem(icon = Icons.Default.QueueMusic, text = "Add to queue")
-        PlaylistMenuItem(icon = Icons.Default.Share, text = "Share")
-        PlaylistMenuItem(icon = Icons.Default.Radio, text = "Go to radio")
-        PlaylistMenuItem(icon = Icons.Default.Flag, text = "Report")
+        PlaylistMenuItem(icon = Icons.Default.Add, text = "Add to Your Library", onClick = onPlaceholderClick)
+        PlaylistMenuItem(icon = Icons.Default.ArrowDownward, text = "Download", onClick = onPlaceholderClick)
+        PlaylistMenuItem(icon = Icons.Default.QueueMusic, text = "Add to queue", onClick = onPlaceholderClick)
+        PlaylistMenuItem(icon = Icons.Default.Share, text = "Share", onClick = onPlaceholderClick)
+        PlaylistMenuItem(icon = Icons.Default.Radio, text = "Go to radio", onClick = onPlaceholderClick)
+        PlaylistMenuItem(icon = Icons.Default.Flag, text = "Report", onClick = onPlaceholderClick)
 
         Spacer(modifier = Modifier.weight(1f))
 
@@ -116,10 +118,15 @@ fun PlaylistMenuView(
  * 歌单菜单项组件
  */
 @Composable
-private fun PlaylistMenuItem(icon: ImageVector, text: String) {
+private fun PlaylistMenuItem(
+    icon: ImageVector,
+    text: String,
+    onClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(horizontal = 24.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

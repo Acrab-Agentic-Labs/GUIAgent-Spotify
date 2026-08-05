@@ -25,7 +25,10 @@ import com.example.myspotify.ui.common.AssetImage
  * UserTab - 用户个人页面（点击首页头像进入）
  */
 @Composable
-fun UserTabView(onBack: () -> Unit) {
+fun UserTabView(
+    onBack: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
+) {
     val menuItems = listOf(
         UserMenuItem(Icons.Default.Add, "Add account"),
         UserMenuItem(Icons.Default.Notifications, "What's new"),
@@ -77,7 +80,7 @@ fun UserTabView(onBack: () -> Unit) {
                 text = "View profile",
                 color = Color.Gray,
                 fontSize = 14.sp,
-                modifier = Modifier.clickable { }
+                modifier = Modifier.clickable(onClick = onPlaceholderClick)
             )
         }
 
@@ -86,7 +89,10 @@ fun UserTabView(onBack: () -> Unit) {
         // 菜单列表
         LazyColumn {
             items(menuItems) { item ->
-                UserMenuItemRow(item)
+                UserMenuItemRow(
+                    item = item,
+                    onClick = onPlaceholderClick
+                )
             }
         }
     }
@@ -104,11 +110,14 @@ data class UserMenuItem(
  * 菜单项行组件
  */
 @Composable
-fun UserMenuItemRow(item: UserMenuItem) {
+fun UserMenuItemRow(
+    item: UserMenuItem,
+    onClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { }
+            .clickable(onClick = onClick)
             .padding(horizontal = 24.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

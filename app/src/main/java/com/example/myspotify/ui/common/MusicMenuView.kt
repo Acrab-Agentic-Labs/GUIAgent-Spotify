@@ -1,6 +1,7 @@
 package com.example.myspotify.ui.common
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,7 +28,8 @@ import com.example.myspotify.model.Song
 @Composable
 fun MusicMenuView(
     song: Song,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -75,17 +77,17 @@ fun MusicMenuView(
         Spacer(modifier = Modifier.height(8.dp))
 
         // 菜单项列表
-        MusicMenuItem(icon = Icons.Default.FavoriteBorder, text = "Like")
-        MusicMenuItem(icon = Icons.Default.Block, text = "Hide this song")
-        MusicMenuItem(icon = Icons.Default.PlaylistAdd, text = "Add to playlist")
-        MusicMenuItem(icon = Icons.Default.QueueMusic, text = "Add to queue")
-        MusicMenuItem(icon = Icons.Default.Album, text = "View album")
-        MusicMenuItem(icon = Icons.Default.Person, text = "View artist")
-        MusicMenuItem(icon = Icons.Default.Share, text = "Share")
-        MusicMenuItem(icon = Icons.Default.Description, text = "Song credits")
-        MusicMenuItem(icon = Icons.Default.Timer, text = "Sleep timer")
-        MusicMenuItem(icon = Icons.Default.Radio, text = "Go to radio")
-        MusicMenuItem(icon = Icons.Default.Flag, text = "Report")
+        MusicMenuItem(icon = Icons.Default.FavoriteBorder, text = "Like", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Block, text = "Hide this song", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.PlaylistAdd, text = "Add to playlist", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.QueueMusic, text = "Add to queue", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Album, text = "View album", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Person, text = "View artist", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Share, text = "Share", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Description, text = "Song credits", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Timer, text = "Sleep timer", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Radio, text = "Go to radio", onClick = onPlaceholderClick)
+        MusicMenuItem(icon = Icons.Default.Flag, text = "Report", onClick = onPlaceholderClick)
 
         Spacer(modifier = Modifier.weight(1f))
 
@@ -115,10 +117,15 @@ fun MusicMenuView(
  * 歌曲菜单项组件
  */
 @Composable
-private fun MusicMenuItem(icon: ImageVector, text: String) {
+private fun MusicMenuItem(
+    icon: ImageVector,
+    text: String,
+    onClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(horizontal = 24.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

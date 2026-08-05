@@ -45,7 +45,8 @@ fun HomeTabView(
     likedSongIds: List<String> = emptyList(),
     onToggleLike: (Song) -> Unit = {},
     savedPodcastIds: MutableList<String> = mutableListOf(),
-    savedAudiobookIds: MutableList<String> = mutableListOf()
+    savedAudiobookIds: MutableList<String> = mutableListOf(),
+    onPlaceholderClick: () -> Unit = {}
 ) {
     var showUserTab by remember { mutableStateOf(false) }
     var selectedCategory by remember { mutableStateOf("All") }
@@ -57,7 +58,10 @@ fun HomeTabView(
 
     // 显示 UserTab
     if (showUserTab) {
-        UserTabView(onBack = { showUserTab = false })
+        UserTabView(
+            onBack = { showUserTab = false },
+            onPlaceholderClick = onPlaceholderClick
+        )
         return
     }
 
@@ -153,11 +157,11 @@ fun HomeTabView(
             "Podcasts" -> podcastsContent(onPodcastClick = { podcast ->
                 selectedPodcast = podcast
                 showPodcastDetail = true
-            })
+            }, onPlaceholderClick = onPlaceholderClick)
             "Audiobooks" -> audiobooksContent(onAudiobookClick = { audiobook ->
                 selectedAudiobook = audiobook
                 showAudiobookDetail = true
-            })
+            }, onPlaceholderClick = onPlaceholderClick)
         }
     }
 }

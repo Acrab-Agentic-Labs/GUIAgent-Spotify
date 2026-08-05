@@ -1,6 +1,7 @@
 package com.example.myspotify.ui.library
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -23,7 +24,8 @@ import androidx.compose.ui.unit.sp
  */
 @Composable
 fun ImportYourMusicTabView(
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -90,7 +92,7 @@ fun ImportYourMusicTabView(
 
             // Import 按钮
             Button(
-                onClick = {},
+                onClick = onPlaceholderClick,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Color(0xFF1DB954)
                 ),
@@ -114,7 +116,8 @@ fun ImportYourMusicTabView(
                 text = "Learn more",
                 color = Color(0xFF1DB954),
                 fontSize = 14.sp,
-                fontWeight = FontWeight.Medium
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.clickable(onClick = onPlaceholderClick)
             )
 
             // 把内容推向上方的间距

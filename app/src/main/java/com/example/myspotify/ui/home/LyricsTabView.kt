@@ -22,7 +22,11 @@ import com.example.myspotify.model.Song
  * LyricsTab View - 全屏歌词页面
  */
 @Composable
-fun LyricsTabView(song: Song? = null, onBack: () -> Unit) {
+fun LyricsTabView(
+    song: Song? = null,
+    onBack: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
+) {
     val songTitle = song?.title ?: "IRIS OUT"
     val songArtist = song?.artistName ?: "Kenshi Yonezu"
 
@@ -68,7 +72,7 @@ fun LyricsTabView(song: Song? = null, onBack: () -> Unit) {
                     fontSize = 12.sp
                 )
             }
-            IconButton(onClick = {}) {
+            IconButton(onClick = onPlaceholderClick) {
                 Icon(
                     imageVector = Icons.Default.Share,
                     contentDescription = "Share",

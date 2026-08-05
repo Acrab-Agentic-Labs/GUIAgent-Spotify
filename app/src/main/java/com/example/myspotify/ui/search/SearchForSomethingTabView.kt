@@ -43,6 +43,7 @@ fun SearchForSomethingTabView(
     allSongs: List<Song> = emptyList(),
     onBack: () -> Unit,
     onSongClick: (Song) -> Unit = {},
+    onPlaceholderClick: () -> Unit = {},
     onRecentSearchItemsChange: (List<RecentSearchItem>) -> Unit = {}
 ) {
     var searchText by remember { mutableStateOf("") }
@@ -174,6 +175,7 @@ fun SearchForSomethingTabView(
                 ) { item ->
                     RecentSearchRow(
                         item = item,
+                        onClick = onPlaceholderClick,
                         onRemove = {
                             displayItems.remove(item)
                             onRecentSearchItemsChange(displayItems.toList())
@@ -239,12 +241,13 @@ private fun SearchResultSongRow(
 @Composable
 private fun RecentSearchRow(
     item: RecentSearchItem,
+    onClick: () -> Unit,
     onRemove: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { }
+            .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

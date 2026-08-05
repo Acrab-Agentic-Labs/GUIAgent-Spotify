@@ -49,7 +49,8 @@ fun YourLibraryTabView(
     followedArtistIds: MutableList<String> = mutableListOf(),
     onToggleFollow: (Artist) -> Unit = {},
     savedPodcastIds: MutableList<String> = mutableListOf(),
-    savedAudiobookIds: List<String> = emptyList()
+    savedAudiobookIds: List<String> = emptyList(),
+    onPlaceholderClick: () -> Unit = {}
 ) {
     // 子页面导航状态
     var showCreateTab by remember { mutableStateOf(false) }
@@ -122,13 +123,15 @@ fun YourLibraryTabView(
             playlistSongs = playlistSongs,
             onBack = { showUserPlaylistDetail = false; selectedUserPlaylist = null },
             onSongClick = onSongClick,
+            onPlaylistMenuClick = onPlaceholderClick,
             onSongMenuClick = onSongMenuClick,
             onAddToPlaylist = {
                 selectedUserPlaylist = actualPlaylist
                 showAddToPlaylistTab = true
             },
             likedSongIds = likedSongIds,
-            onToggleLike = onToggleLike
+            onToggleLike = onToggleLike,
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -168,7 +171,8 @@ fun YourLibraryTabView(
             likedSongIds = likedSongIds,
             onToggleLike = onToggleLike,
             isFollowed = followedArtistIds.contains(artist.id),
-            onToggleFollow = { onToggleFollow(artist) }
+            onToggleFollow = { onToggleFollow(artist) },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -202,7 +206,10 @@ fun YourLibraryTabView(
 
     // 子页面：导入音乐
     if (showImportMusicTab) {
-        ImportYourMusicTabView(onBack = { showImportMusicTab = false })
+        ImportYourMusicTabView(
+            onBack = { showImportMusicTab = false },
+            onPlaceholderClick = onPlaceholderClick
+        )
         return
     }
 
@@ -210,7 +217,8 @@ fun YourLibraryTabView(
     if (showSearchTab) {
         SearchYourLibraryTabView(
             followedArtists = followedArtists,
-            onCancel = { showSearchTab = false }
+            onCancel = { showSearchTab = false },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -221,9 +229,11 @@ fun YourLibraryTabView(
             likedSongs = likedSongs,
             onBack = { showLikedSongsTab = false },
             onSongClick = onSongClick,
+            onPlaylistMenuClick = onPlaceholderClick,
             onSongMenuClick = onSongMenuClick,
             likedSongIds = likedSongIds,
-            onToggleLike = onToggleLike
+            onToggleLike = onToggleLike,
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -339,7 +349,7 @@ fun YourLibraryTabView(
                             )
                         }
 
-                        IconButton(onClick = {}) {
+                        IconButton(onClick = onPlaceholderClick) {
                             Icon(
                                 imageVector = Icons.Default.MoreVert,
                                 contentDescription = "Grid View",
@@ -483,7 +493,8 @@ fun YourLibraryTabView(
                         SavedMediaItem(
                             title = podcastTitle,
                             type = "Podcast",
-                            icon = Icons.Default.Podcasts
+                            icon = Icons.Default.Podcasts,
+                            onClick = onPlaceholderClick
                         )
                     }
                 }
@@ -494,7 +505,8 @@ fun YourLibraryTabView(
                         SavedMediaItem(
                             title = audiobookTitle,
                             type = "Audiobook",
-                            icon = Icons.Default.Book
+                            icon = Icons.Default.Book,
+                            onClick = onPlaceholderClick
                         )
                     }
                 }
@@ -617,7 +629,8 @@ fun YourLibraryTabView(
         if (showCreateTab) {
             CreateTabView(
                 onDismiss = { showCreateTab = false },
-                onPlaylistCreate = { showPlaylistNameTab = true }
+                onPlaylistCreate = { showPlaylistNameTab = true },
+                onPlaceholderClick = onPlaceholderClick
             )
         }
     }
@@ -711,10 +724,16 @@ fun ArtistItem(artist: Artist, onClick: () -> Unit = {}) {
  * 已收藏的播客/有声书项
  */
 @Composable
-fun SavedMediaItem(title: String, type: String, icon: ImageVector) {
+fun SavedMediaItem(
+    title: String,
+    type: String,
+    icon: ImageVector,
+    onClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

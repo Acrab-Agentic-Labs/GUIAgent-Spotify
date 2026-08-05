@@ -1,6 +1,7 @@
 package com.example.myspotify.ui.library
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -28,7 +29,8 @@ import com.example.myspotify.ui.common.AssetImage
 @Composable
 fun SearchYourLibraryTabView(
     followedArtists: List<Artist>,
-    onCancel: () -> Unit
+    onCancel: () -> Unit,
+    onPlaceholderClick: () -> Unit = {}
 ) {
     var searchText by remember { mutableStateOf("") }
 
@@ -110,7 +112,10 @@ fun SearchYourLibraryTabView(
         // 最近搜索列表（显示已关注的艺术家）
         LazyColumn {
             items(followedArtists) { artist ->
-                RecentSearchItem(artist = artist)
+                RecentSearchItem(
+                    artist = artist,
+                    onClick = onPlaceholderClick
+                )
             }
 
             item {
@@ -124,10 +129,14 @@ fun SearchYourLibraryTabView(
  * 最近搜索项（艺术家）
  */
 @Composable
-private fun RecentSearchItem(artist: Artist) {
+private fun RecentSearchItem(
+    artist: Artist,
+    onClick: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {

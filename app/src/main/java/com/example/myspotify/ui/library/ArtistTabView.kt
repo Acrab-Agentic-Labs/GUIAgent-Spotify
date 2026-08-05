@@ -43,7 +43,8 @@ fun ArtistTabView(
     likedSongIds: List<String> = emptyList(),
     onToggleLike: (Song) -> Unit = {},
     isFollowed: Boolean = false,
-    onToggleFollow: () -> Unit = {}
+    onToggleFollow: () -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
 ) {
     // 根据 artist id 生成一个稳定的 "monthly listeners" 数字
     val monthlyListeners = remember(artist.id) {
@@ -137,7 +138,7 @@ fun ArtistTabView(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Button(
-                        onClick = {},
+                        onClick = onPlaceholderClick,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF1DB954)
                         ),
@@ -166,7 +167,7 @@ fun ArtistTabView(
                             .size(48.dp)
                             .clip(CircleShape)
                             .background(Color(0xFF1DB954))
-                            .clickable {},
+                            .clickable(onClick = onPlaceholderClick),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
@@ -218,7 +219,10 @@ fun ArtistTabView(
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(artistAlbums) { album ->
-                        AlbumCard(album = album)
+                        AlbumCard(
+                            album = album,
+                            onClick = onPlaceholderClick
+                        )
                     }
                 }
             }
@@ -314,9 +318,14 @@ private fun PopularSongItem(index: Int, song: Song, onClick: () -> Unit = {}, on
  * 专辑卡片
  */
 @Composable
-private fun AlbumCard(album: Album) {
+private fun AlbumCard(
+    album: Album,
+    onClick: () -> Unit = {}
+) {
     Column(
-        modifier = Modifier.width(140.dp)
+        modifier = Modifier
+            .width(140.dp)
+            .clickable(onClick = onClick)
     ) {
         AssetImage(
             assetPath = AssetMapper.albumCover(album.id),

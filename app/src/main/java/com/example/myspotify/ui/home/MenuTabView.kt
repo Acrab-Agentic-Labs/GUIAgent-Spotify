@@ -31,7 +31,8 @@ fun MenuTabView(
     onBack: () -> Unit,
     onAddToPlaylist: () -> Unit = {},
     onSleepTimer: () -> Unit = {},
-    sleepTimerDuration: String? = null
+    sleepTimerDuration: String? = null,
+    onPlaceholderClick: () -> Unit = {}
 ) {
     val songTitle = song?.title ?: "IRIS OUT"
     val songArtist = song?.artistName ?: "Kenshi Yonezu"
@@ -83,15 +84,15 @@ fun MenuTabView(
         Spacer(modifier = Modifier.height(8.dp))
 
         // 菜单项列���
-        MenuItem(icon = Icons.Default.FavoriteBorder, text = "Like")
-        MenuItem(icon = Icons.Default.Block, text = "Hide this song")
+        MenuItem(icon = Icons.Default.FavoriteBorder, text = "Like", onClick = onPlaceholderClick)
+        MenuItem(icon = Icons.Default.Block, text = "Hide this song", onClick = onPlaceholderClick)
         MenuItem(icon = Icons.Default.PlaylistAdd, text = "Add to playlist", onClick = onAddToPlaylist)
-        MenuItem(icon = Icons.Default.QueueMusic, text = "Add to queue")
-        MenuItem(icon = Icons.Default.Album, text = "View album")
-        MenuItem(icon = Icons.Default.Person, text = "View artist")
-        MenuItem(icon = Icons.Default.Share, text = "Share")
-        MenuItem(icon = Icons.Default.Radio, text = "Song radio")
-        MenuItem(icon = Icons.Default.Description, text = "Song credits")
+        MenuItem(icon = Icons.Default.QueueMusic, text = "Add to queue", onClick = onPlaceholderClick)
+        MenuItem(icon = Icons.Default.Album, text = "View album", onClick = onPlaceholderClick)
+        MenuItem(icon = Icons.Default.Person, text = "View artist", onClick = onPlaceholderClick)
+        MenuItem(icon = Icons.Default.Share, text = "Share", onClick = onPlaceholderClick)
+        MenuItem(icon = Icons.Default.Radio, text = "Song radio", onClick = onPlaceholderClick)
+        MenuItem(icon = Icons.Default.Description, text = "Song credits", onClick = onPlaceholderClick)
         MenuItem(
             icon = Icons.Default.Timer,
             text = if (sleepTimerDuration != null) "Sleep timer · $sleepTimerDuration" else "Sleep timer",

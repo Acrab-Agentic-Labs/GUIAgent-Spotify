@@ -25,7 +25,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun CheckOutTabView(
     onBack: () -> Unit,
-    onPaymentSuccess: () -> Unit = {}
+    onPaymentSuccess: () -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
 ) {
     Column(
         modifier = Modifier
@@ -106,7 +107,7 @@ fun CheckOutTabView(
                         color = Color(0xFF1DB954),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        modifier = Modifier.clickable { }
+                        modifier = Modifier.clickable(onClick = onPlaceholderClick)
                     )
                 }
             }
@@ -125,7 +126,9 @@ fun CheckOutTabView(
 
             // 支付方式选择器
             Surface(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = onPlaceholderClick),
                 color = Color(0xFF282828),
                 shape = RoundedCornerShape(8.dp)
             ) {

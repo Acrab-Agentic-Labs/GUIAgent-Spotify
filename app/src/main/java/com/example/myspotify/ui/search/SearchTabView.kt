@@ -37,6 +37,7 @@ fun SearchTabView(
     recentlyPlayedSongs: List<Song>,
     followedArtists: List<Artist>,
     onSongClick: (Song) -> Unit = {},
+    onPlaceholderClick: () -> Unit = {},
     onSearchStateChange: (List<Map<String, String>>, List<Map<String, String>>) -> Unit = { _, _ -> }
 ) {
     // 导航状态
@@ -87,6 +88,7 @@ fun SearchTabView(
             allSongs = songs,
             onBack = { showSearchForSomething = false },
             onSongClick = onSongClick,
+            onPlaceholderClick = onPlaceholderClick,
             onRecentSearchItemsChange = { currentItems ->
                 onSearchStateChange(toExportItems(recentSearchItems), toExportItems(currentItems))
             }
@@ -100,7 +102,8 @@ fun SearchTabView(
                 selectedCategoryTitle, selectedCategorySource,
                 albums, playlists, songs, artists
             ),
-            onBack = { showCategoryDetail = false }
+            onBack = { showCategoryDetail = false },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -313,4 +316,3 @@ fun CategoryCard(
         )
     }
 }
-

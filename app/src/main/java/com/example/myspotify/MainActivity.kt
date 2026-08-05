@@ -25,6 +25,7 @@ import com.example.myspotify.model.Artist
 import com.example.myspotify.model.Playlist
 import com.example.myspotify.model.Song
 import com.example.myspotify.ui.common.AssetImage
+import com.example.myspotify.ui.common.DevelopmentPlaceholderView
 import com.example.myspotify.ui.common.MusicMenuView
 import com.example.myspotify.ui.common.PlaylistMenuView
 import com.example.myspotify.ui.home.PlayingTabView
@@ -65,6 +66,7 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
     var menuSong by remember { mutableStateOf<Song?>(null) }
     var showAddToPlaylistTab by remember { mutableStateOf(false) }
     var addToPlaylistTarget by remember { mutableStateOf<Playlist?>(null) }
+    var showPlaceholderTab by remember { mutableStateOf(false) }
     val userPlaylists = remember { mutableStateListOf<Playlist>() }
     val savedPlaylistIds = remember {
         mutableStateListOf<String>().apply { addAll(dataManager.getUserData().savedPlaylists) }
@@ -201,6 +203,16 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
         menuSong = song
         showMusicMenu = true
     }
+    val onPlaceholderClick: () -> Unit = {
+        showPlaceholderTab = true
+    }
+
+    if (showPlaceholderTab) {
+        DevelopmentPlaceholderView(
+            onBack = { showPlaceholderTab = false }
+        )
+        return
+    }
 
     // 显示添加歌曲到歌单页面
     if (showAddToPlaylistTab && addToPlaylistTarget != null) {
@@ -236,7 +248,8 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
     if (showPlaylistMenu && menuPlaylist != null) {
         PlaylistMenuView(
             playlist = menuPlaylist!!,
-            onBack = { showPlaylistMenu = false; menuPlaylist = null }
+            onBack = { showPlaylistMenu = false; menuPlaylist = null },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -245,7 +258,8 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
     if (showMusicMenu && menuSong != null) {
         MusicMenuView(
             song = menuSong!!,
-            onBack = { showMusicMenu = false; menuSong = null }
+            onBack = { showMusicMenu = false; menuSong = null },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -284,6 +298,7 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
             },
             sleepTimerDuration = sleepTimerDuration,
             onSleepTimerChange = { duration -> sleepTimerDuration = duration },
+            onPlaceholderClick = onPlaceholderClick,
             onPrevious = {
                 val currentIndex = songs.indexOfFirst { it.id == selectedSong?.id }
                 if (currentIndex > 0) {
@@ -334,7 +349,8 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
             onAddToPlaylist = {
                 addToPlaylistTarget = actualPlaylist
                 showAddToPlaylistTab = true
-            }
+            },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -371,7 +387,8 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
                 } else {
                     savedAlbumIds.remove(album.id)
                 }
-            }
+            },
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
@@ -383,7 +400,8 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
                     song = selectedSong,
                     isLiked = selectedSong?.let { likedSongIds.contains(it.id) } ?: false,
                     onLikeToggle = { selectedSong?.let { onToggleLike(it) } },
-                    onClick = { showPlayingTab = true }
+                    onClick = { showPlayingTab = true },
+                    onPlaceholderClick = onPlaceholderClick
                 )
                 BottomNavigationBar(
                     selectedTab = selectedTab,
@@ -408,7 +426,8 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
                     likedSongIds = likedSongIds,
                     onToggleLike = onToggleLike,
                     savedPodcastIds = savedPodcastIds,
-                    savedAudiobookIds = savedAudiobookIds
+                    savedAudiobookIds = savedAudiobookIds,
+                    onPlaceholderClick = onPlaceholderClick
                 )
                 1 -> SearchTabView(
                     songs = songs,
@@ -418,6 +437,7 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
                     recentlyPlayedSongs = recentlyPlayedSongs,
                     followedArtists = followedArtists,
                     onSongClick = onSongClick,
+                    onPlaceholderClick = onPlaceholderClick,
                     onSearchStateChange = { initialItems, currentItems ->
                         autoTestExporter.exportSearchState(initialItems, currentItems)
                     }
@@ -439,10 +459,12 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
                     followedArtistIds = followedArtistIds,
                     onToggleFollow = onToggleFollow,
                     savedPodcastIds = savedPodcastIds,
-                    savedAudiobookIds = savedAudiobookIds
+                    savedAudiobookIds = savedAudiobookIds,
+                    onPlaceholderClick = onPlaceholderClick
                 )
                 3 -> PremiumTabView(
-                    onPremiumActivated = { isPremium = true }
+                    onPremiumActivated = { isPremium = true },
+                    onPlaceholderClick = onPlaceholderClick
                 )
             }
         }
@@ -515,7 +537,8 @@ fun MiniPlayer(
     song: Song? = null,
     isLiked: Boolean = false,
     onLikeToggle: () -> Unit = {},
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
 ) {
     val coverPath = if (song != null) AssetMapper.songCover(song) else "cover/13.png"
     val title = song?.title ?: "IRIS OUT"
@@ -562,7 +585,7 @@ fun MiniPlayer(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                IconButton(onClick = {}) {
+                IconButton(onClick = onPlaceholderClick) {
                     Icon(
                         imageVector = Icons.Default.Phone,
                         contentDescription = "Devices",
@@ -576,7 +599,7 @@ fun MiniPlayer(
                         tint = if (isLiked) Color(0xFF1DB954) else Color.White
                     )
                 }
-                IconButton(onClick = {}) {
+                IconButton(onClick = onPlaceholderClick) {
                     Icon(
                         imageVector = Icons.Default.PlayArrow,
                         contentDescription = "Play",

@@ -53,7 +53,8 @@ fun PlayingTabView(
     repeatMode: RepeatMode = RepeatMode.OFF,
     onRepeatCycle: () -> Unit = {},
     sleepTimerDuration: String? = null,
-    onSleepTimerChange: (String?) -> Unit = {}
+    onSleepTimerChange: (String?) -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
 ) {
     val songTitle = song?.title ?: "IRIS OUT"
     val songArtist = song?.artistName ?: "Kenshi Yonezu"
@@ -130,12 +131,17 @@ fun PlayingTabView(
             onBack = { showMenuTab = false },
             onAddToPlaylist = { showSelectPlaylist = true },
             onSleepTimer = { showSleepTimer = true },
-            sleepTimerDuration = sleepTimerDuration
+            sleepTimerDuration = sleepTimerDuration,
+            onPlaceholderClick = onPlaceholderClick
         )
         return
     }
     if (showLyricsTab) {
-        LyricsTabView(song = song, onBack = { showLyricsTab = false })
+        LyricsTabView(
+            song = song,
+            onBack = { showLyricsTab = false },
+            onPlaceholderClick = onPlaceholderClick
+        )
         return
     }
     if (showCreditsTab) {
@@ -143,7 +149,11 @@ fun PlayingTabView(
         return
     }
     if (showAboutArtistTab) {
-        AboutTheArtistTabView(song = song, onBack = { showAboutArtistTab = false })
+        AboutTheArtistTabView(
+            song = song,
+            onBack = { showAboutArtistTab = false },
+            onPlaceholderClick = onPlaceholderClick
+        )
         return
     }
 
@@ -207,7 +217,7 @@ fun PlayingTabView(
         Spacer(modifier = Modifier.height(24.dp))
 
         // 底部功能按钮
-        BottomActionRow()
+        BottomActionRow(onPlaceholderClick = onPlaceholderClick)
 
         Spacer(modifier = Modifier.height(32.dp))
 
@@ -419,21 +429,21 @@ private fun PlaybackControls(
 }
 
 @Composable
-private fun BottomActionRow() {
+private fun BottomActionRow(onPlaceholderClick: () -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         // 队列列表按钮（三横杠菜单样式）
-        IconButton(onClick = {}) {
+        IconButton(onClick = onPlaceholderClick) {
             Icon(
                 imageVector = Icons.Default.Menu,
                 contentDescription = "Queue",
                 tint = Color.White
             )
         }
-        IconButton(onClick = {}) {
+        IconButton(onClick = onPlaceholderClick) {
             Icon(
                 imageVector = Icons.Default.Share,
                 contentDescription = "Share",

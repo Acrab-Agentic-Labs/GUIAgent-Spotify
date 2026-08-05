@@ -23,7 +23,10 @@ import androidx.compose.ui.unit.sp
 /**
  * Podcasts 标签页内容 — 视频播客 Feed 流
  */
-fun LazyListScope.podcastsContent(onPodcastClick: (PodcastFeedItem) -> Unit = {}) {
+fun LazyListScope.podcastsContent(
+    onPodcastClick: (PodcastFeedItem) -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
+) {
     val podcastItems = listOf(
         PodcastFeedItem(
             title = "How AI is Changing Music",
@@ -50,7 +53,11 @@ fun LazyListScope.podcastsContent(onPodcastClick: (PodcastFeedItem) -> Unit = {}
 
     podcastItems.forEach { feedItem ->
         item {
-            PodcastVideoCard(feedItem, onClick = { onPodcastClick(feedItem) })
+            PodcastVideoCard(
+                item = feedItem,
+                onClick = { onPodcastClick(feedItem) },
+                onPlaceholderClick = onPlaceholderClick
+            )
         }
     }
 
@@ -75,7 +82,11 @@ data class PodcastFeedItem(
  * 视频播客卡片
  */
 @Composable
-fun PodcastVideoCard(item: PodcastFeedItem, onClick: () -> Unit = {}) {
+fun PodcastVideoCard(
+    item: PodcastFeedItem,
+    onClick: () -> Unit = {},
+    onPlaceholderClick: () -> Unit = {}
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -107,7 +118,7 @@ fun PodcastVideoCard(item: PodcastFeedItem, onClick: () -> Unit = {}) {
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 IconButton(
-                    onClick = {},
+                    onClick = onPlaceholderClick,
                     modifier = Modifier
                         .size(36.dp)
                         .clip(RoundedCornerShape(50))
@@ -121,7 +132,7 @@ fun PodcastVideoCard(item: PodcastFeedItem, onClick: () -> Unit = {}) {
                     )
                 }
                 IconButton(
-                    onClick = {},
+                    onClick = onPlaceholderClick,
                     modifier = Modifier
                         .size(36.dp)
                         .clip(RoundedCornerShape(50))
