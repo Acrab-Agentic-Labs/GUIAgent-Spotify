@@ -1,0 +1,295 @@
+{
+  "app_package": "com.example.myspotify",
+  "app_activity": "com.example.myspotify.MainActivity",
+  "tasks": [
+    {
+      "task_id": 1,
+      "instruction": "View the current user name",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_1.py",
+      "expected_answer": "User"
+    },
+    {
+      "task_id": 2,
+      "instruction": "Name of the currently playing song",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_2.py",
+      "expected_answer": "IRIS OUT"
+    },
+    {
+      "task_id": 3,
+      "instruction": "Count the number of categories on the search page",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_3.py",
+      "expected_answer": "14"
+    },
+    {
+      "task_id": 4,
+      "instruction": "Count the number of songs in the first recommended playlist under \"to get you started\"",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_4.py"
+    },
+    {
+      "task_id": 5,
+      "instruction": "Tell me the title of the first podcast on the podcast page",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_5.py",
+      "expected_answer": "How AI is Changing Music"
+    },
+    {
+      "task_id": 6,
+      "instruction": "Tell me the release time of the first podcast",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_6.py",
+      "expected_answer": "Dec 15"
+    },
+    {
+      "task_id": 7,
+      "instruction": "Tell me the name of the first audiobook",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_7.py",
+      "expected_answer": "The Art of Reading"
+    },
+    {
+      "task_id": 8,
+      "instruction": "Tell me the playing duration of the first audiobook",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_8.py",
+      "expected_answer": "5h 32min"
+    },
+    {
+      "task_id": 9,
+      "instruction": "Tell me who the singer of the currently playing song is",
+      "difficulty": 1,
+      "category": "Info",
+      "check_script": "check_9.py",
+      "expected_answer": "Kenshi Yonezu"
+    },
+    {
+      "task_id": 10,
+      "instruction": "Play or pause the song on the full-screen playback page",
+      "difficulty": 1,
+      "category": "Playback",
+      "check_script": "check_10.py"
+    },
+    {
+      "task_id": 11,
+      "instruction": "Play the next song",
+      "difficulty": 1,
+      "category": "Playback",
+      "check_script": "check_11.py"
+    },
+    {
+      "task_id": 12,
+      "instruction": "Enable shuffle play mode",
+      "difficulty": 1,
+      "category": "Playback",
+      "check_script": "check_12.py"
+    },
+    {
+      "task_id": 13,
+      "instruction": "Enable repeat single song mode",
+      "difficulty": 1,
+      "category": "Playback",
+      "check_script": "check_13.py"
+    },
+    {
+      "task_id": 14,
+      "instruction": "Add the currently playing song to favorites",
+      "difficulty": 1,
+      "category": "Library",
+      "check_script": "check_14.py"
+    },
+    {
+      "task_id": 15,
+      "instruction": "Remove the currently playing song from favorites",
+      "difficulty": 1,
+      "category": "Library",
+      "check_script": "check_15.py"
+    },
+    {
+      "task_id": 16,
+      "instruction": "Set the timer to 15 minutes",
+      "difficulty": 2,
+      "category": "Playback",
+      "check_script": "check_16.py"
+    },
+    {
+      "task_id": 17,
+      "instruction": "Turn off the timer",
+      "difficulty": 2,
+      "category": "Playback",
+      "check_script": "check_17.py"
+    },
+    {
+      "task_id": 18,
+      "instruction": "View the lyrics of the currently playing song",
+      "difficulty": 2,
+      "category": "Info",
+      "check_script": "check_18.py"
+    },
+    {
+      "task_id": 19,
+      "instruction": "View the production information of the current song",
+      "difficulty": 2,
+      "category": "Info",
+      "check_script": "check_19.py"
+    },
+    {
+      "task_id": 20,
+      "instruction": "View the artist information of the current song",
+      "difficulty": 2,
+      "category": "Info",
+      "check_script": "check_20.py"
+    },
+    {
+      "task_id": 21,
+      "instruction": "Search for the song \"Shape of You\"",
+      "difficulty": 2,
+      "category": "Search",
+      "check_script": "check_21.py"
+    },
+    {
+      "task_id": 22,
+      "instruction": "View the content of the 'Music' category on the search page",
+      "difficulty": 2,
+      "category": "Search",
+      "check_script": "check_22.py"
+    },
+    {
+      "task_id": 23,
+      "instruction": "Open the QR code scanning page",
+      "difficulty": 2,
+      "category": "Search",
+      "check_script": "check_23.py"
+    },
+    {
+      "task_id": 24,
+      "instruction": "Delete one recent search record on the search input page",
+      "difficulty": 2,
+      "category": "Search",
+      "check_script": "check_24.py"
+    },
+    {
+      "task_id": 25,
+      "instruction": "Create a new playlist named 'My Rock' in the music library",
+      "difficulty": 2,
+      "category": "Playlist",
+      "check_script": "check_25.py"
+    },
+    {
+      "task_id": 26,
+      "instruction": "Open the Liked Songs playlist",
+      "difficulty": 2,
+      "category": "Library",
+      "check_script": "check_26.py"
+    },
+    {
+      "task_id": 27,
+      "instruction": "Open Taylor Swift's homepage in the music library",
+      "difficulty": 2,
+      "category": "Library",
+      "check_script": "check_27.py"
+    },
+    {
+      "task_id": 28,
+      "instruction": "Follow a new artist",
+      "difficulty": 2,
+      "category": "Library",
+      "check_script": "check_28.py"
+    },
+    {
+      "task_id": 29,
+      "instruction": "Follow a new podcast",
+      "difficulty": 2,
+      "category": "Podcast",
+      "check_script": "check_29.py"
+    },
+    {
+      "task_id": 30,
+      "instruction": "Randomly add a playlist from the homepage to the music library",
+      "difficulty": 2,
+      "category": "Playlist",
+      "check_script": "check_30.py"
+    },
+    {
+      "task_id": 31,
+      "instruction": "Add a song to Liked Songs",
+      "difficulty": 3,
+      "category": "Library",
+      "check_script": "check_31.py"
+    },
+    {
+      "task_id": 32,
+      "instruction": "Add a song to any playlist in the music library except the Liked Songs playlist",
+      "difficulty": 3,
+      "category": "Playlist",
+      "check_script": "check_32.py"
+    },
+    {
+      "task_id": 33,
+      "instruction": "Perform a membership payment operation",
+      "difficulty": 3,
+      "category": "Premium",
+      "check_script": "check_33.py"
+    },
+    {
+      "task_id": 34,
+      "instruction": "Post the comment 'Great episode!' on a random podcast",
+      "difficulty": 3,
+      "category": "Podcast",
+      "check_script": "check_34.py"
+    },
+    {
+      "task_id": 35,
+      "instruction": "Fast forward a certain podcast by 15 seconds",
+      "difficulty": 3,
+      "category": "Podcast",
+      "check_script": "check_35.py"
+    },
+    {
+      "task_id": 36,
+      "instruction": "Unfollow Taylor Swift",
+      "difficulty": 3,
+      "category": "Library",
+      "check_script": "check_36.py"
+    },
+    {
+      "task_id": 37,
+      "instruction": "Randomly add an audiobook to favorites",
+      "difficulty": 3,
+      "category": "Audiobook",
+      "check_script": "check_37.py"
+    },
+    {
+      "task_id": 38,
+      "instruction": "Create a new playlist and add two new songs to it",
+      "difficulty": 3,
+      "category": "Playlist",
+      "check_script": "check_38.py"
+    },
+    {
+      "task_id": 39,
+      "instruction": "Among the followed singers, who has the most works",
+      "difficulty": 3,
+      "category": "Info",
+      "check_script": "check_39.py"
+    },
+    {
+      "task_id": 40,
+      "instruction": "How many liked songs are there in the music library currently",
+      "difficulty": 3,
+      "category": "Info",
+      "check_script": "check_40.py",
+      "expected_answer": "2"
+    }
+  ]
+}

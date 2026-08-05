@@ -1,0 +1,145 @@
+[
+  {
+    "id": "song_001",
+    "title": "Shake It Off",
+    "artistId": "artist_001",
+    "artistName": "Taylor Swift",
+    "albumId": "album_001",
+    "albumName": "1989",
+    "durationMs": 219000,
+    "coverUrl": "https://placeholder.com/album/1989.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_002",
+    "title": "Blank Space",
+    "artistId": "artist_001",
+    "artistName": "Taylor Swift",
+    "albumId": "album_001",
+    "albumName": "1989",
+    "durationMs": 231000,
+    "coverUrl": "https://placeholder.com/album/1989.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_003",
+    "title": "Style",
+    "artistId": "artist_001",
+    "artistName": "Taylor Swift",
+    "albumId": "album_001",
+    "albumName": "1989",
+    "durationMs": 231000,
+    "coverUrl": "https://placeholder.com/album/1989.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_004",
+    "title": "Shape of You",
+    "artistId": "artist_002",
+    "artistName": "Ed Sheeran",
+    "albumId": "album_002",
+    "albumName": "÷ (Divide)",
+    "durationMs": 233000,
+    "coverUrl": "https://placeholder.com/album/divide.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_005",
+    "title": "Perfect",
+    "artistId": "artist_002",
+    "artistName": "Ed Sheeran",
+    "albumId": "album_002",
+    "albumName": "÷ (Divide)",
+    "durationMs": 263000,
+    "coverUrl": "https://placeholder.com/album/divide.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_006",
+    "title": "Castle on the Hill",
+    "artistId": "artist_002",
+    "artistName": "Ed Sheeran",
+    "albumId": "album_002",
+    "albumName": "÷ (Divide)",
+    "durationMs": 261000,
+    "coverUrl": "https://placeholder.com/album/divide.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_007",
+    "title": "Blinding Lights",
+    "artistId": "artist_003",
+    "artistName": "The Weeknd",
+    "albumId": "album_003",
+    "albumName": "After Hours",
+    "durationMs": 200000,
+    "coverUrl": "https://placeholder.com/album/after_hours.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_008",
+    "title": "Save Your Tears",
+    "artistId": "artist_003",
+    "artistName": "The Weeknd",
+    "albumId": "album_003",
+    "albumName": "After Hours",
+    "durationMs": 215000,
+    "coverUrl": "https://placeholder.com/album/after_hours.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_009",
+    "title": "In Your Eyes",
+    "artistId": "artist_003",
+    "artistName": "The Weeknd",
+    "albumId": "album_003",
+    "albumName": "After Hours",
+    "durationMs": 237000,
+    "coverUrl": "https://placeholder.com/album/after_hours.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_010",
+    "title": "bad guy",
+    "artistId": "artist_004",
+    "artistName": "Billie Eilish",
+    "albumId": "album_004",
+    "albumName": "WHEN WE ALL FALL ASLEEP",
+    "durationMs": 194000,
+    "coverUrl": "https://placeholder.com/album/billie_album.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_011",
+    "title": "everything i wanted",
+    "artistId": "artist_004",
+    "artistName": "Billie Eilish",
+    "albumId": "album_004",
+    "albumName": "WHEN WE ALL FALL ASLEEP",
+    "durationMs": 245000,
+    "coverUrl": "https://placeholder.com/album/billie_album.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_012",
+    "title": "God's Plan",
+    "artistId": "artist_005",
+    "artistName": "Drake",
+    "albumId": "album_005",
+    "albumName": "Scorpion",
+    "durationMs": 198000,
+    "coverUrl": "https://placeholder.com/album/scorpion.jpg",
+    "audioFilePath": ""
+  },
+  {
+    "id": "song_013",
+    "title": "IRIS OUT",
+    "artistId": "artist_006",
+    "artistName": "Kenshi Yonezu",
+    "albumId": "album_006",
+    "albumName": "LOST CORNER",
+    "durationMs": 219000,
+    "coverUrl": "https://placeholder.com/album/lost_corner.jpg",
+    "audioFilePath": ""
+  }
+]

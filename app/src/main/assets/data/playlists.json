@@ -1,0 +1,34 @@
+[
+  {
+    "id": "playlist_001",
+    "name": "Today's Top Hits",
+    "coverUrl": "https://placeholder.com/playlist/top_hits.jpg",
+    "creator": "Spotify",
+    "description": "The hottest tracks right now",
+    "songIds": ["song_007", "song_004", "song_010", "song_012", "song_001"]
+  },
+  {
+    "id": "playlist_002",
+    "name": "Chill Vibes",
+    "coverUrl": "https://placeholder.com/playlist/chill.jpg",
+    "creator": "Spotify",
+    "description": "Relax and unwind with these chill tracks",
+    "songIds": ["song_005", "song_008", "song_011", "song_003"]
+  },
+  {
+    "id": "playlist_003",
+    "name": "Pop Hits",
+    "coverUrl": "https://placeholder.com/playlist/pop.jpg",
+    "creator": "Spotify",
+    "description": "The biggest pop songs",
+    "songIds": ["song_001", "song_002", "song_004", "song_007", "song_010"]
+  },
+  {
+    "id": "playlist_004",
+    "name": "My Favorites",
+    "coverUrl": "https://placeholder.com/playlist/favorites.jpg",
+    "creator": "User",
+    "description": "Your liked songs",
+    "songIds": []
+  }
+]

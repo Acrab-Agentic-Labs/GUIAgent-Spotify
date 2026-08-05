@@ -1,0 +1,44 @@
+[
+  {
+    "id": "artist_001",
+    "name": "Taylor Swift",
+    "avatarUrl": "https://placeholder.com/artist/taylor_swift.jpg",
+    "bio": "American singer-songwriter",
+    "genres": ["Pop", "Country"]
+  },
+  {
+    "id": "artist_002",
+    "name": "Ed Sheeran",
+    "avatarUrl": "https://placeholder.com/artist/ed_sheeran.jpg",
+    "bio": "English singer-songwriter",
+    "genres": ["Pop", "Folk"]
+  },
+  {
+    "id": "artist_003",
+    "name": "The Weeknd",
+    "avatarUrl": "https://placeholder.com/artist/the_weeknd.jpg",
+    "bio": "Canadian singer and songwriter",
+    "genres": ["R&B", "Pop"]
+  },
+  {
+    "id": "artist_004",
+    "name": "Billie Eilish",
+    "avatarUrl": "https://placeholder.com/artist/billie_eilish.jpg",
+    "bio": "American singer-songwriter",
+    "genres": ["Pop", "Alternative"]
+  },
+  {
+    "id": "artist_005",
+    "name": "Drake",
+    "avatarUrl": "https://placeholder.com/artist/drake.jpg",
+    "bio": "Canadian rapper and singer",
+    "genres": ["Hip Hop", "R&B"]
+  },
+  {
+    "id": "artist_006",
+    "name": "Kenshi Yonezu",
+    "avatarUrl": "https://placeholder.com/artist/kenshi_yonezu.jpg",
+    "bio": "Japanese musician, singer-songwriter",
+    "genres": ["Pop", "Rock"]
+  }
+]

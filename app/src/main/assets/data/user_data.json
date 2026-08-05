@@ -1,0 +1,6 @@
+{
+  "likedSongs": ["song_001", "song_004"],
+  "savedPlaylists": ["playlist_001", "playlist_002"],
+  "followedArtists": ["artist_001", "artist_002"],
+  "recentlyPlayed": ["song_007", "song_004", "song_001"]
+}

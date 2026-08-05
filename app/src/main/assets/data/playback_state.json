@@ -1,0 +1,8 @@
+{
+  "currentSongId": null,
+  "isPlaying": false,
+  "progressMs": 0,
+  "playMode": "SEQUENTIAL",
+  "playlistQueue": [],
+  "currentIndex": 0
+}

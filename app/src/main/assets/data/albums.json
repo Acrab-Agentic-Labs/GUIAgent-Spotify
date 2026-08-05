@@ -1,0 +1,29 @@
+[
+  {
+    "id": "album_001",
+    "name": "1989",
+    "artistId": "artist_001",
+    "artistName": "Taylor Swift",
+    "coverUrl": "https://placeholder.com/album/1989.jpg",
+    "releaseYear": 2014,
+    "songIds": ["song_001", "song_002", "song_003"]
+  },
+  {
+    "id": "album_002",
+    "name": "÷ (Divide)",
+    "artistId": "artist_002",
+    "artistName": "Ed Sheeran",
+    "coverUrl": "https://placeholder.com/album/divide.jpg",
+    "releaseYear": 2017,
+    "songIds": ["song_004", "song_005", "song_006"]
+  },
+  {
+    "id": "album_003",
+    "name": "After Hours",
+    "artistId": "artist_003",
+    "artistName": "The Weeknd",
+    "coverUrl": "https://placeholder.com/album/after_hours.jpg",
+    "releaseYear": 2020,
+    "songIds": ["song_007", "song_008", "song_009"]
+  }
+]
