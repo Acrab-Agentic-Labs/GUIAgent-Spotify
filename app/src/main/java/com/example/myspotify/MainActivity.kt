@@ -84,7 +84,9 @@ fun MainScreen(dataManager: DataManager, autoTestExporter: AutoTestExporter) {
     var isShuffle by remember { mutableStateOf(false) }
     var repeatMode by remember { mutableStateOf(RepeatMode.OFF) }
     var isPremium by remember { mutableStateOf(false) }
-    var sleepTimerDuration by remember { mutableStateOf<String?>(null) }
+    // 睡眠定时器初始为开启状态：SleepTimerView 只有在定时器激活时才显示 "Turn off timer"，
+    // 若初始为关闭，"关闭定时器"这个任务既无法执行，也无法与"从未设置过定时器"的状态区分。
+    var sleepTimerDuration by remember { mutableStateOf<String?>("30 minutes") }
     val artists = remember { dataManager.getArtists() }
     val albums = remember { dataManager.getAlbums() }
     val playlists = remember { dataManager.getPlaylists() }
